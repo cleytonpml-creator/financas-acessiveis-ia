@@ -1,66 +1,457 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saúde e Bem-Estar</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finanças Acessíveis com IA</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 0.3; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    @keyframes sound-wave {
+      0%, 100% { height: 8px; }
+      50% { height: 32px; }
+    }
+    @keyframes scan-beam {
+      0% { top: 0%; opacity: 0.8; }
+      50% { top: 92%; opacity: 1; }
+      100% { top: 0%; opacity: 0.8; }
+    }
+    .animate-scan-beam {
+      animation: scan-beam 2s infinite ease-in-out;
+    }
+    .animate-pulse-ring {
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+    .wave-bar-1 { animation: sound-wave 0.8s ease-in-out infinite 0.1s; }
+    .wave-bar-2 { animation: sound-wave 0.8s ease-in-out infinite 0.3s; }
+    .wave-bar-3 { animation: sound-wave 0.8s ease-in-out infinite 0.5s; }
+    .wave-bar-4 { animation: sound-wave 0.8s ease-in-out infinite 0.2s; }
+    .wave-bar-5 { animation: sound-wave 0.8s ease-in-out infinite 0.4s; }
+
+    /* Acessibilidade: Alto Contraste */
+    .high-contrast {
+      --tw-bg-opacity: 1 !important;
+      background-color: #000000 !important;
+      color: #ffffff !important;
+    }
+    .high-contrast .contrast-box {
+      background-color: #000000 !important;
+      border: 2px solid #ffffff !important;
+    }
+    .high-contrast .contrast-emerald {
+      color: #00ff66 !important;
+      border-color: #00ff66 !important;
+    }
+    .high-contrast .contrast-rose {
+      color: #ff3333 !important;
+      border-color: #ff3333 !important;
+    }
+
+    /* Escala dinâmica de fontes */
+    html.font-size-sm { font-size: 14px; }
+    html.font-size-md { font-size: 16px; }
+    html.font-size-lg { font-size: 19px; }
+    html.font-size-xl { font-size: 22px; }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-<body>
-<header>
-<h1>Guia de Saúde e Bem-Estar</h1>
-<nav>
-<ul>
-<li><a href="#inicio">Início</a></li>
-<li><a href="#saude-fisica">Saúde Física</a></li>
-<li><a href="#saude-mental">Saúde Mental</a></li>
-<li><a href="#contato">Contato</a></li>
-</ul>
-</nav>
-</header>
-​<main>
-<section id="inicio">
-<h2>Bem-vindo ao seu guia de equilíbrio</h2>
-<p>Descubra dicas e orientações para melhorar sua saúde física e mental diariamente.</p>
-</section>
-​<section id="saude-fisica">
-<h2>Saúde Física</h2>
-<article>
-<h3>Alimentação Saudável</h3>
-<p>Consuma alimentos frescos, frutas, verduras e beba bastante água. Evite processados.</p>
-</article>
-<article>
-<h3>Exercícios Regulares</h3>
-<p>Pratique pelo menos 30 minutos de atividade física diária, como caminhada ou natação.</p>
-</article>
-</section>
-​<section id="saude-mental">
-<h2>Saúde Mental</h2>
-<article>
-<h3>Práticas de Mindfulness</h3>
-<p>Reserve um tempo para meditar ou simplesmente respirar fundo e focar no presente.</p>
-</article>
-<article>
-<h3>Sono de Qualidade</h3>
-<p>Durma entre 7 e 8 horas por noite para que seu cérebro descanse e se recupere.</p>
-</article>
-</section>
-​<section id="contato">
-<h2>Entre em Contato</h2>
-<form id="contato-form">
-<label for="nome">Nome:</label>
-<input type="text" id="nome" name="nome" required>
-​<label for="email">E-mail:</label>
-<input type="email" id="email" name="email" required>
-​<label for="mensagem">Mensagem:</label>
-<textarea id="mensagem" name="mensagem" required></textarea>
-​<button type="submit">Enviar</button>
-</form>
-</section>
-</main>
-​<footer>
-<p>© 2026 Guia de Saúde e Bem-Estar. Todos os direitos reservados.</p>
-</footer>
-​<script src="script.js"></script>
-</body>
-</html>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen font-sans selection:bg-emerald-500 selection:text-black transition-colors duration-200">
+
+  <div id="app" class="max-w-md w-full mx-auto min-h-screen flex flex-col justify-between shadow-2xl bg-zinc-950 border-x border-zinc-900 pb-28 relative">
+    
+    <!-- Barra Superior de Acessibilidade Rápida -->
+    <div class="bg-zinc-900/90 border-b border-zinc-800 px-4 py-2 flex items-center justify-between text-xs text-zinc-400">
+      <div class="flex items-center gap-1.5 font-medium">
+        <span>♿ Acessibilidade:</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="btn-font-dec" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-bold" title="Diminuir texto" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-font-inc" class="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-bold" title="Aumentar texto" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast-toggle" class="px-2.5 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-semibold" title="Alternar alto contraste" aria-label="Alternar modo de alto contraste">Contraste</button>
+        <button id="btn-read-screen" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30 font-medium" title="Ler resumo em áudio" aria-label="Ler resumo financeiro em áudio">🔊 Ler Tela</button>
+      </div>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="p-5 flex items-center justify-between border-b border-zinc-900 contrast-box">
+      <div id="btn-edit-user-name" class="flex items-center gap-3 cursor-pointer group" title="Toque para alterar seu nome" role="button" tabindex="0" aria-label="Alterar nome do usuário">
+        <div id="user-avatar-initials" class="w-11 h-11 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-extrabold text-base shadow-inner group-hover:border-emerald-400 transition">
+          👤
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs text-zinc-400">Olá,</span>
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <h1 id="user-display-name" class="text-base font-bold text-zinc-100 tracking-tight group-hover:text-emerald-400 transition">Vamos começar</h1>
+            <span class="text-zinc-500 text-xs group-hover:text-zinc-300" title="Editar nome">✏️</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <!-- Ocultar/Exibir Valores -->
+        <button
+          id="btn-toggle-values"
+          aria-label="Alternar visibilidade de valores"
+          class="p-2.5 rounded-2xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition active:scale-95 contrast-box"
+        >
+          <span id="eye-icon">👁️</span>
+        </button>
+        <!-- Escanear Recibo / Boleto -->
+        <button
+          id="btn-open-receipt-modal"
+          aria-label="Escanear recibo ou boleto com a câmera"
+          class="p-2.5 rounded-2xl bg-teal-500/20 border border-teal-500/40 text-teal-300 hover:bg-teal-500/30 transition active:scale-95 font-bold contrast-box"
+          title="Tirar foto de recibo ou boleto"
+        >
+          📸
+        </button>
+        <!-- Adicionar Manual -->
+        <button
+          id="btn-open-add-modal"
+          aria-label="Adicionar movimentação manualmente"
+          class="p-2.5 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 transition active:scale-95 font-bold contrast-box"
+          title="Nova transação"
+        >
+          ➕
+        </button>
+      </div>
+    </header>
+
+    <main class="p-4 space-y-4 flex-1">
+      
+      <!-- ABA 1: INÍCIO -->
+      <div id="tab-inicio" class="space-y-4">
+        
+        <!-- Card Saldo Geral -->
+        <section aria-label="Resumo da conta" class="contrast-box bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 p-6 rounded-3xl border border-zinc-800 shadow-xl relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Saldo Total Disponível</span>
+            <button id="btn-read-balance" class="text-zinc-400 hover:text-emerald-400 text-sm" title="Ouvir saldo">🔊</button>
+          </div>
+          
+          <div class="my-3">
+            <h2 id="total-balance-text" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+              R$ 0,00
+            </h2>
+            <p id="balance-badge" class="text-xs font-semibold mt-1 inline-flex items-center gap-1 text-emerald-400">
+              ● Saldo Positivo
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-4 border-t border-zinc-800/80 mt-4">
+            <div class="p-2.5 rounded-2xl bg-zinc-950/40 border border-zinc-800/60">
+              <span class="text-[11px] text-zinc-400 block font-medium">▲ Total Entradas</span>
+              <span id="total-income-text" class="text-sm font-bold text-emerald-400 block mt-0.5 contrast-emerald">
+                + R$ 0,00
+              </span>
+            </div>
+            <div class="p-2.5 rounded-2xl bg-zinc-950/40 border border-zinc-800/60">
+              <span class="text-[11px] text-zinc-400 block font-medium">▼ Total Saídas</span>
+              <span id="total-expense-text" class="text-sm font-bold text-rose-400 block mt-0.5 contrast-rose">
+                - R$ 0,00
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Card de Insight IA Dinâmico -->
+        <section aria-label="Dica inteligente da IA" class="contrast-box bg-zinc-900/90 border border-emerald-500/30 p-4 rounded-3xl flex flex-col gap-3 shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                Consultor Financeiro Gemini
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button
+                id="btn-refresh-ai-tip"
+                class="text-xs text-zinc-400 hover:text-emerald-400 p-1 rounded transition"
+                title="Pedir nova dica para a inteligência artificial"
+                aria-label="Gerar nova dica inteligente"
+              >
+                🔄 Novo Conselho
+              </button>
+              <button
+                id="btn-speak-tip"
+                aria-label="Ouvir a dica de economia em voz alta"
+                class="p-2 bg-zinc-800 hover:bg-zinc-700 text-emerald-400 rounded-xl transition active:scale-95"
+              >
+                🔊
+              </button>
+            </div>
+          </div>
+          <p id="ai-tip-text" class="text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
+            Toque no microfone 🎙️ ou na câmera 📸 para registrar sua primeira movimentação!
+          </p>
+          <div id="ai-loading-bar" class="hidden w-full bg-zinc-800 h-1 rounded-full overflow-hidden">
+            <div class="bg-emerald-400 h-full w-1/2 animate-pulse"></div>
+          </div>
+        </section>
+
+        <!-- Atalhos Rápidos de Ação -->
+        <div class="grid grid-cols-3 gap-2">
+          <button id="btn-quick-voice" class="p-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-2xl flex flex-col items-center text-center gap-1.5 transition active:scale-95 contrast-box">
+            <span class="text-xl p-1.5 bg-emerald-500/20 text-emerald-400 rounded-xl">🎙️</span>
+            <div>
+              <p class="text-xs font-bold text-zinc-100">Falar Gasto</p>
+              <p class="text-[10px] text-zinc-400">Por voz</p>
+            </div>
+          </button>
+
+          <button id="btn-quick-scan" class="p-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-2xl flex flex-col items-center text-center gap-1.5 transition active:scale-95 contrast-box">
+            <span class="text-xl p-1.5 bg-teal-500/20 text-teal-400 rounded-xl">📸</span>
+            <div>
+              <p class="text-xs font-bold text-zinc-100">Foto Recibo</p>
+              <p class="text-[10px] text-zinc-400">Ler boleto</p>
+            </div>
+          </button>
+          
+          <button id="btn-quick-ask-ai" class="p-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-2xl flex flex-col items-center text-center gap-1.5 transition active:scale-95 contrast-box">
+            <span class="text-xl p-1.5 bg-emerald-500/20 text-emerald-400 rounded-xl">🧠</span>
+            <div>
+              <p class="text-xs font-bold text-zinc-100">Auditoria</p>
+              <p class="text-[10px] text-zinc-400">Dicas IA</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Extrato e Transações Recentes -->
+        <section aria-label="Histórico recente" class="space-y-3 pt-2">
+          <div class="flex justify-between items-center px-1">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-zinc-400">Histórico de Atividades</h3>
+            <span id="tx-count-badge" class="text-[11px] font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+              0 itens
+            </span>
+          </div>
+
+          <!-- Filtros Rápidos -->
+          <div class="flex gap-1.5 overflow-x-auto no-scrollbar py-1">
+            <button data-filter="all" class="tx-filter-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-emerald-500 text-zinc-950 font-bold">
+              Todos
+            </button>
+            <button data-filter="expense" class="tx-filter-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white">
+              Despesas
+            </button>
+            <button data-filter="income" class="tx-filter-btn px-3 py-1.5 rounded-xl text-xs font-medium bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white">
+              Entradas
+            </button>
+          </div>
+
+          <!-- Campo de Busca Rápida -->
+          <div class="relative">
+            <input
+              id="search-input"
+              type="text"
+              placeholder="🔍 Buscar por mercado, transporte, frete..."
+              class="w-full bg-zinc-900 border border-zinc-800 rounded-2xl px-3.5 py-2.5 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 contrast-box"
+            />
+          </div>
+
+          <!-- Lista de Transações Injetadas via JS -->
+          <div id="transactions-container" class="space-y-2"></div>
+        </section>
+
+      </div>
+
+      <!-- ABA 2: GRÁFICOS & RELATÓRIOS -->
+      <div id="tab-graficos" class="space-y-4 hidden">
+        <div class="p-5 bg-zinc-900/90 border border-zinc-800 rounded-3xl space-y-4 contrast-box">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-zinc-200 uppercase tracking-wider">Despesas por Categoria</h3>
+            <button id="btn-read-categories" class="text-xs text-emerald-400 hover:underline">🔊 Ouvir dados</button>
+          </div>
+          
+          <div id="category-bars-container" class="space-y-3 pt-1"></div>
+        </div>
+
+        <!-- Meta de Economia -->
+        <div class="p-5 bg-zinc-900/80 border border-zinc-800 rounded-3xl space-y-3 contrast-box">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-zinc-200">Meta do Mês (Reserva)</h3>
+            <span id="savings-percent" class="text-xs font-bold text-emerald-400">0% concluído</span>
+          </div>
+          <div class="w-full bg-zinc-800 rounded-full h-3 overflow-hidden">
+            <div id="savings-bar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-3 rounded-full transition-all duration-500" style="width: 0%;"></div>
+          </div>
+          <div class="flex justify-between text-xs text-zinc-400">
+            <span>Guardado: <strong id="saved-amount-text" class="text-zinc-200">R$ 0,00</strong></span>
+            <span>Meta: <strong class="text-zinc-200">R$ 500,00</strong></span>
+          </div>
+        </div>
+
+        <!-- Regra 50/30/20 -->
+        <div class="p-5 bg-gradient-to-br from-zinc-900 to-zinc-950 border border-emerald-500/30 rounded-3xl space-y-3 contrast-box">
+          <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+            <span>✨</span> Sugestão de Alocação (Regra 50/30/20)
+          </h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Com base em sua renda atual, a divisão recomendada para estabilidade financeira é:
+          </p>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="p-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700">
+              <span class="block font-bold text-emerald-400">50%</span>
+              <span class="text-[10px] text-zinc-400">Essenciais</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700">
+              <span class="block font-bold text-amber-400">30%</span>
+              <span class="text-[10px] text-zinc-400">Estilo de Vida</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700">
+              <span class="block font-bold text-teal-400">20%</span>
+              <span class="text-[10px] text-zinc-400">Futuro / Dívidas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA 3: CONSULTORIA IA -->
+      <div id="tab-ia" class="space-y-4 hidden">
+        <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-3xl space-y-3 contrast-box">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-lg">
+              🤖
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-zinc-100">Consultor Gemini Finanças</h3>
+              <p class="text-xs text-zinc-400">Tire dúvidas sobre economia, dívidas ou investimentos</p>
+            </div>
+          </div>
+
+          <div id="ai-chat-messages" class="h-64 overflow-y-auto space-y-2.5 p-3 bg-zinc-950/70 rounded-2xl border border-zinc-800 text-xs">
+            <div id="ai-chat-welcome-text" class="p-3 bg-zinc-900 rounded-2xl border border-zinc-800 text-zinc-300">
+              Olá! Eu analiso suas finanças em tempo real. Você pode me perguntar: 
+              <br/><br/>
+              • <em>"Posso gastar 150 reais no fim de semana?"</em><br/>
+              • <em>"Como posso cortar 20% do transporte?"</em><br/>
+              • <em>"Qual a melhor forma de quitar compras parceladas?"</em>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <input
+              id="ai-question-input"
+              type="text"
+              placeholder="Digite sua dúvida financeira..."
+              class="flex-1 bg-zinc-950 border border-zinc-800 rounded-2xl px-3.5 py-2.5 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 contrast-box"
+            />
+            <button
+              id="btn-send-ai-question"
+              class="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs rounded-2xl transition active:scale-95"
+            >
+              Enviar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- MODAL DE BOAS-VINDAS / ONBOARDING COM CONTA ZERADA -->
+    <div id="welcome-modal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+      <div class="bg-zinc-900 border border-emerald-500/40 rounded-3xl w-full max-w-sm p-6 text-center space-y-4 contrast-box shadow-2xl">
+        <div class="w-16 h-16 mx-auto rounded-3xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center text-3xl">
+          👋
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold text-zinc-100">Vamos começar!</h3>
+          <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+            Digite seu nome para personalizar sua experiência. Todos os dados começam zerados e ficam salvos com segurança apenas no seu aparelho.
+          </p>
+        </div>
+
+        <form id="welcome-form" class="space-y-3 pt-1 text-left">
+          <div>
+            <label for="welcome-input-name" class="block text-xs text-zinc-400 mb-1.5 font-medium">Seu Nome ou Apelido</label>
+            <input
+              id="welcome-input-name"
+              type="text"
+              required
+              maxlength="32"
+              placeholder="Ex: Maria Silva, Lucas..."
+              class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-3.5 py-2.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 contrast-box"
+              autocomplete="name"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-2xl text-xs transition active:scale-95 shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2"
+          >
+            <span>🚀</span> Entrar com Conta Zerada
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL 1: ENTRADA POR VOZ INTELIGENTE -->
+    <div id="voice-modal" class="hidden fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-end sm:items-center justify-center p-4">
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl w-full max-w-sm p-6 text-center space-y-4 contrast-box">
+        <div class="flex justify-between items-center">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Reconhecimento Ativo</span>
+          <button id="btn-close-voice-modal" class="text-zinc-400 hover:text-white text-sm p-1">✕</button>
+        </div>
+
+        <h4 class="text-base font-bold text-zinc-100">Fale naturalmente</h4>
+        <p class="text-xs text-zinc-400">
+          Exemplo: <em>"Gastei 42 reais na padaria"</em> ou <em>"Recebi 300 reais de frete"</em>
+        </p>
+
+        <!-- Indicador de Áudio & Animação -->
+        <div class="flex justify-center py-4">
+          <div id="voice-pulse-circle" class="w-24 h-24 rounded-full flex items-center justify-center text-4xl bg-emerald-500/20 text-emerald-400 ring-4 ring-emerald-500/30 animate-pulse-ring transition">
+            🎙️
+          </div>
+        </div>
+
+        <!-- Barras de Onda Sonora -->
+        <div id="sound-waves" class="flex justify-center items-center gap-1.5 h-8">
+          <span class="w-1.5 bg-emerald-400 rounded-full wave-bar-1"></span>
+          <span class="w-1.5 bg-emerald-400 rounded-full wave-bar-2"></span>
+          <span class="
+```
